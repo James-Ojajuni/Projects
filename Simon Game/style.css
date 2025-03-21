@@ -43,6 +43,7 @@ body {
     color: var(--neon-blue);
     font-weight: 1000;
     line-height: 90%;
+    margin-top: 20px;
 }
 
 h2 {
