@@ -116,7 +116,7 @@ checkAnswers = () => {
 gameOver = () => {
     playSound("wrong");
     level = 0;
-    $("h2").text("Game Over! Press any key to restart.");
+    $("h2").text("Game Over! Touch Screen or Press any key to restart.");
     interval = 1000;
     gamePattern = [];
     document.addEventListener("keydown", startGameHandler);
