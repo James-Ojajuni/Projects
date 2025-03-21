@@ -1,0 +1,190 @@
+:root {
+    --neon-blue: #00bfff;
+    --dark-neon-blue: #003b4e;
+    --game-size: 270px;
+    --dark-red: #c90404;
+    --dark-yellow: #757502;
+    --dark-green: #005500;
+    --dark-blue: #00005e;
+    --light-red: #ff5151;
+    --light-yellow : #ffffaa;
+    --light-green : #04d404;
+    --light-blue : #6d6dff;
+}
+
+* {
+    margin: 0;
+    font-family:  "press start 2p";
+    /* border: 1px solid white; */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2.5rem;
+    background-color: #2a2a2a;
+    height: 100vh;    
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    flex-basis: 35%;
+}
+
+.title {
+    font-size: 3rem;
+    letter-spacing: 0.65rem;
+    color: var(--neon-blue);
+    font-weight: 1000;
+    line-height: 90%;
+}
+
+h2 {
+    text-align: center;
+    max-width: 800px;
+    color: var(--neon-blue);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    grid-template-rows: repeat(2, 49%);
+    gap: 2%;
+    border-radius: 50%;
+    height: var(--game-size);
+    width: var(--game-size);
+    box-shadow:  
+    8px 8px var(--dark-neon-blue),
+    5px 5px var(--dark-neon-blue),
+    4px 4px var(--dark-neon-blue), 
+    3px 3px var(--dark-neon-blue), 
+    2px 2px var(--dark-neon-blue), 
+    1px 1px var(--dark-neon-blue);
+    background-color: var(--dark-neon-blue);
+    /* border: var(--neon-blue) solid 3px; */
+}
+
+
+
+[class|="color"] {
+    transition: transform .1s, box-shadow .1s;
+}
+
+[class|="color"]:hover {
+    cursor: pointer;
+}
+
+.color-red {
+    border-top-left-radius: 100%;
+    background-color: red;
+    box-shadow:  
+    5px 5px var(--dark-red),
+    4px 4px var(--dark-red), 
+    3px 3px var(--dark-red), 
+    2px 2px var(--dark-red), 
+    1px 1px var(--dark-red);
+}
+
+.color-red-lighter {
+    border-top-left-radius: 100%;
+    background-color: var(--light-red);
+}
+
+.color-yellow {
+    border-top-right-radius: 100%;
+    background-color: yellow;
+    box-shadow:  
+    5px 5px var(--dark-yellow),
+    4px 4px var(--dark-yellow), 
+    3px 3px var(--dark-yellow), 
+    2px 2px var(--dark-yellow), 
+    1px 1px var(--dark-yellow);
+}
+
+.color-yellow-lighter {
+    border-top-right-radius: 100%;
+    background-color: var(--light-yellow);
+}
+
+.color-green {
+    border-bottom-left-radius: 100%;
+    background-color: green;
+    box-shadow:  
+    5px 5px var(--dark-green), 
+    4px 4px var(--dark-green), 
+    3px 3px var(--dark-green), 
+    2px 2px var(--dark-green), 
+    1px 1px var(--dark-green);
+}
+
+.color-green-lighter {
+    border-bottom-left-radius: 100%;
+    background-color: var(--light-green);
+}
+
+.color-blue {
+    border-bottom-right-radius: 100%;
+    background-color: blue;
+    box-shadow:  
+    5px 5px var(--dark-blue), 
+    4px 4px var(--dark-blue), 
+    3px 3px var(--dark-blue), 
+    2px 2px var(--dark-blue), 
+    1px 1px var(--dark-blue);
+}
+
+.color-blue-lighter {
+    border-bottom-right-radius: 100%;
+    background-color: var(--light-blue);
+}
+
+@media (max-width: 670px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    :root {
+        --game-size: 250px;
+    }
+}
+
+@media (max-width: 460px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    :root {
+        --game-size: 230px;
+    }
+}
+
+@media (max-width: 380px) {
+    .title {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    :root {
+        --game-size: 230px;
+    }
+}

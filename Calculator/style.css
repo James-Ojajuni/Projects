@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(70, 69, 69);
+    height: 100vh;
+    font-family: inter, helvetica;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+#output {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 260px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    margin: 0;
+}
+
+body > div {
+    width: 300px;
+    height: 450px;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgb(163, 166, 168);
+}
+
+.buttons {
+    width: 280px;
+    height: 350px;
+    gap: .25em;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr) ;
+}
+
+button {
+    font-family: inter, helvetica;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 50%;
+    border: 1px black solid;
+    background-color: rgb(65, 63, 63);
+    color: white;
+    transition: opacity .3s
+}
+
+button:hover {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 60%;
+}
+
+.grey {
+    background-color: rgb(153, 152, 152);
+    transition: opacity .3s;
+    color: black;
+}
+
+.grey:hover {
+    opacity: 80%;
+}
+
+.grey:active {
+    opacity: 20%;
+}
+
+.zero {
+    grid-column: span 2;
+    border-radius: 70px;
+}
+
+.operators {
+    background-color: rgb(247, 145, 86);
+    color: black;
+    transition: opacity .3s;
+}
+
+.operators:hover {
+    opacity: 80%;
+    
+}
+
+.operators:active {
+    opacity: 20%;
+}
