@@ -78,16 +78,19 @@ function gameOverInstruction() {
 }
 
 // Playing sound corresponding to the color chosen at random or the clicked color   
-function playSound(string) {
-    let sounds = {
-        "color-red": "./assets/sounds/doh.mp3",
-        "color-yellow": "./assets/sounds/reh.mp3",
-        "color-green": "./assets/sounds/mih.mp3",
-        "color-blue": "./assets/sounds/soh.mp3",
-        "wrong": "./assets/sounds/wrong.mp3"
-    };
+const sounds = {
+    "color-red": new Audio("./assets/sounds/doh.mp3"),
+    "color-yellow": new Audio("./assets/sounds/reh.mp3"),
+    "color-green": new Audio("./assets/sounds/mih.mp3"),
+    "color-blue": new Audio("./assets/sounds/soh.mp3"),
+    "wrong": new Audio("./assets/sounds/wrong.mp3")
+};
 
-    new Audio(sounds[string]).play();
+function playSound(string) {
+    if (sounds[string]) {
+        sounds[string].currentTime = 0; // Restart the sound instantly
+        sounds[string].play();
+    }
 }
 
 enableUserAnswer = () => { 
