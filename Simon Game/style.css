@@ -1,7 +1,7 @@
 :root {
     --neon-blue: #00bfff;
     --dark-neon-blue: #003b4e;
-    --game-size: 270px;
+    --game-size: clamp(16.875rem, 20dvw, 31.25rem);
     --dark-red: #c90404;
     --dark-yellow: #757502;
     --dark-green: #005500;
@@ -14,6 +14,7 @@
 
 * {
     margin: 0;
+    padding: 0;
     font-family:  "press start 2p";
     /* border: 1px solid white; */
 }
@@ -25,7 +26,8 @@ body {
     align-items: center;
     gap: 2.5rem;
     background-color: #2a2a2a;
-    height: 100vh;    
+    height: 100dvh;    
+    width: 100dvw;
 }
 
 .introduction {
@@ -38,7 +40,7 @@ body {
 }
 
 .title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 4dvw, 4rem);
     letter-spacing: 0.65rem;
     color: var(--neon-blue);
     font-weight: 1000;
@@ -48,10 +50,10 @@ body {
 
 h2 {
     text-align: center;
-    max-width: 800px;
     color: var(--neon-blue);
-    font-size: 2rem;
-    font-weight: 900;
+    font-size: clamp( 1.625rem, 2.7dvw, 3.125rem);
+    max-width: 80dvw;
+    font-weight: 100;
     letter-spacing: 0;
     line-height: 180%;
 }
@@ -72,7 +74,6 @@ h2 {
     2px 2px var(--dark-neon-blue), 
     1px 1px var(--dark-neon-blue);
     background-color: var(--dark-neon-blue);
-    /* border: var(--neon-blue) solid 3px; */
 }
 
 
@@ -86,7 +87,7 @@ h2 {
 }
 
 .color-red {
-    border-top-left-radius: 100%;
+    border-start-start-radius: 100%;
     background-color: red;
     box-shadow:  
     5px 5px var(--dark-red),
@@ -97,12 +98,12 @@ h2 {
 }
 
 .color-red-lighter {
-    border-top-left-radius: 100%;
+    border-start-start-radius: 100%;
     background-color: var(--light-red);
 }
 
 .color-yellow {
-    border-top-right-radius: 100%;
+    border-start-end-radius: 100%;
     background-color: yellow;
     box-shadow:  
     5px 5px var(--dark-yellow),
@@ -113,12 +114,12 @@ h2 {
 }
 
 .color-yellow-lighter {
-    border-top-right-radius: 100%;
+    border-start-end-radius: 100%;
     background-color: var(--light-yellow);
 }
 
 .color-green {
-    border-bottom-left-radius: 100%;
+    border-end-start-radius: 100%;
     background-color: green;
     box-shadow:  
     5px 5px var(--dark-green), 
@@ -129,12 +130,12 @@ h2 {
 }
 
 .color-green-lighter {
-    border-bottom-left-radius: 100%;
+    border-end-start-radius: 100%;
     background-color: var(--light-green);
 }
 
 .color-blue {
-    border-bottom-right-radius: 100%;
+    border-end-end-radius: 100%;
     background-color: blue;
     box-shadow:  
     5px 5px var(--dark-blue), 
@@ -145,48 +146,40 @@ h2 {
 }
 
 .color-blue-lighter {
-    border-bottom-right-radius: 100%;
+    border-end-end-radius: 100%;
     background-color: var(--light-blue);
 }
 
-@media (max-width: 670px) {
-    .title {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    :root {
-        --game-size: 250px;
-    }
-}
 
 @media (max-width: 460px) {
+    body {
+        padding: 3rem 1rem 0 1rem;
+    }
+
     .title {
-        font-size: 1.5rem;
+        font-size: max(1.5625rem, 6.6dvw);
+        line-height: 200%;
+        text-align: center;
     }
 
     h2 {
-        font-size: 1.3rem;
+        max-width: none;
     }
 
-    :root {
-        --game-size: 230px;
+    html {
+        --game-size: 200px;
     }
 }
 
-@media (max-width: 380px) {
-    .title {
-        font-size: 20px;
-    }
 
+@media (max-width: 715px) {
     h2 {
-        font-size: 18px;
-    }
-
-    :root {
-        --game-size: 230px;
+        font-size: max(3.5dvw, 1.25rem);
+        max-width: none;
     }
 }
+
+
+/* things to fix:
+1. Text responsiveness
+2. scroll issue */

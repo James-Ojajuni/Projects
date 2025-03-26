@@ -17,13 +17,15 @@ the game */
 for each click. When the game displays the sequence also, play the sound for each color
 and apply the effects for each display.*/
 
-
 var colors = ["color-red", "color-yellow", "color-blue", "color-green"];
 var gamePattern = [];
 var userAnswers = [];
 var gameStarted = false;
 var level = 0;
 let interval = 1000;
+const instruction = document.getElementById("instruction");
+startingInstruction();
+// window.addEventListener("resize", gameOverInstruction);
 
 // Attach the event listener initially
 document.addEventListener("keydown", startGameHandler);
@@ -50,19 +52,29 @@ function gameBegins() {
             setTimeout(() => {
                 let selectedColor = document.querySelector("." + color); // Select the element
                 selectedColor.classList.add(color + "-lighter");
-    
                 playSound(color); // Play the sound
-    
                 setTimeout(() => {
                     selectedColor.classList.remove(color + "-lighter");
                 }, 200); // Flash duration
-    
             }, index * interval); // 1s interval between each color display
         });
         userAnswers = [];
         setTimeout(() => enableUserAnswer(), 1000);
         interval -= 40;
     }
+
+}
+
+function startingInstruction() {
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+        instruction.textContent = "Touch screen to begin!";
+    } else instruction.textContent = `Press any key to begin!`;}
+
+// check if it is a screen touch or it uses keyboard
+function gameOverInstruction() {
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+        instruction.textContent = "Game Over! Touch to restart";
+    } else instruction.textContent = "Game Over!, press any key to restart"
 }
 
 // Playing sound corresponding to the color chosen at random or the clicked color   
@@ -88,7 +100,6 @@ enableUserAnswer = () => {
                 $(this).removeClass(elementClass + "-lighter");
             }, 200);
             userAnswers.push(elementClass);
-            console.log(userAnswers);
             checkAnswers();
         });
 }
@@ -97,10 +108,7 @@ enableUserAnswer = () => {
 
 checkAnswers = () => {
     let currentIndex = userAnswers.length - 1; // Get the last entered answer
-    
     if (userAnswers[currentIndex] === gamePattern[currentIndex]) {
-        console.log("Correct so far!"); 
-
         // Check if the user has completed the current level
         if (userAnswers.length === gamePattern.length) {
             setTimeout(() => {
@@ -108,18 +116,24 @@ checkAnswers = () => {
             }, 1000);
         }
     } else {
-        console.log("Wrong answer! Game Over.");
-        gameOver();
+        gameOver(); // End the Game
     }
 }
 
 gameOver = () => {
+    //Reset Everything
     playSound("wrong");
     level = 0;
-    $("h2").text("Game Over! Touch Screen or Press any key to restart.");
+    gameOverInstruction();
     interval = 1000;
     gamePattern = [];
     document.addEventListener("keydown", startGameHandler);
     document.addEventListener("touchstart", startGameHandler);
     gameStarted = false;
 }
+
+// things to add
+// changing paragraph based on the screen width
+// Making the game respond nicely on mobile devices
+// write code like a senior dev would write it.
+// click animation
