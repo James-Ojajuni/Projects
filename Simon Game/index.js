@@ -79,10 +79,10 @@ function gameOverInstruction() {
 
 // Playing sound corresponding to the color chosen at random or the clicked color   
 const sounds = {
-    "color-red": "./assets/sounds/doh.mp3",
-    "color-yellow": "./assets/sounds/reh.mp3",
-    "color-green": "./assets/sounds/mih.mp3",
-    "color-blue": "./assets/sounds/soh.mp3",
+    "color-red": new Audio("./assets/sounds/doh.mp3"),
+    "color-yellow": new Audio("./assets/sounds/reh.mp3"),
+    "color-green": new Audio("./assets/sounds/mih.mp3"),
+    "color-blue": new Audio("./assets/sounds/soh.mp3"),
 };
 
 function playSound(string) {
