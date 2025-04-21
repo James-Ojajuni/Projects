@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./book.js"></script>
+    <style>
+        * {
+            font-family: helvetica;
+            font-size: 1.05rem;
+        }
+
+        body {
+            padding: 2rem 0.5rem;
+            background-color: rgb(219, 253, 253);
+        }
+
+        table {
+            /* border: 1px solid black; */
+            width: 70%;
+        }
+
+        tr {
+            border: 1px solid rgb(53, 53, 53);
+            background-color: aqua;
+            
+        }
+
+        th {
+            text-align: start;
+            border: 1px solid rgb(53, 53, 53);
+            background-color: rgb(1, 117, 117);
+            color: white;
+        }
+
+        .action {
+            margin-block-start: 1rem;
+            background-color: rgb(1, 117, 117);
+            color: white;
+            border: 1px solid rgb(53, 53, 53);
+            border-radius: 100rem;
+            padding: 0.5rem 1.5rem;
+            text-transform: capitalize;
+        }
+
+        td > button {
+            font-size: .69rem ;
+            background-color: rgb(1, 117, 117);
+            color: white;
+            border: 1px solid rgb(53, 53, 53);
+            border-radius: 100rem;
+        }
+
+        form {
+            display: none;
+            border: 1px solid black;
+            width: 40%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-block-start: 1rem;
+            background-color: aqua;
+            border-radius: 0.3rem;
+        }
+
+        div {
+            /* border: 1px solid black; */
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        [type="submit"] {
+            background-color: rgb(1, 117, 117);
+            color: white;
+            border: 1px solid rgb(53, 53, 53);
+            border-radius: 100rem;
+            padding: 0.5rem 1.5rem;
+            text-transform: capitalize;
+        }
+
+        p {
+            display: none;
+            color: red;
+            padding: .5rem 1.5rem;
+        }
+        
+    </style>
+    <title>book</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read</th>
+            <th>Remove</th>
+            <th>Toggle Read Status</th>
+        </tr>
+    </table>
+    <button class="action addBook">add new book</button>
+    <p></p>
+    <form id="form" action="">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" name="" id="title">
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" name="" id="author">
+        </div>
+        <div>
+            <label for="pages">Pages:</label>
+            <input type="text" name="" id="pages">
+        </div>
+        <div>
+            <label for="read">Read:</label>
+            <input type="text" name="" id="read">
+        </div>
+        <div>
+            <input class="action" type="submit" value="submit" id="submit">
+        </div>
+    </form>
+</body>
+</html>  
