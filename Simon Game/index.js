@@ -42,40 +42,41 @@ function startGameHandler() {
 
 // A sequence of actions to be carried out when the game begins
 function gameBegins() {
-
     if (gameStarted) {
-        level ++;
+        level++;
         document.querySelector("h2").textContent = "Level " + level;
-        let randomNumber = Math.floor(Math.random()*4);
+        let randomNumber = Math.floor(Math.random() * 4);
         let randomColor = colors[randomNumber];
         gamePattern.push(randomColor);
+        
         gamePattern.forEach((color, index) => {
             setTimeout(() => {
-                let selectedColor = document.querySelector("." + color); // Select the element
+                let selectedColor = document.querySelector("." + color);
                 selectedColor.classList.add(color + "-lighter");
-                playSound(color); // Play the sound
+                playSound(color);
                 setTimeout(() => {
                     selectedColor.classList.remove(color + "-lighter");
                 }, 200); // Flash duration
-            }, index * interval); // 1s interval between each color display
+            }, index * interval);
         });
+        
         userAnswers = [];
-        setTimeout(() => enableUserAnswer(), 1000);
+        setTimeout(() => enableUserAnswer(), gamePattern.length * interval);
         interval -= 40;
     }
-
 }
 
 function startingInstruction() {
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
         instruction.textContent = "Touch screen to begin!";
-    } else instruction.textContent = `Press any key to begin!`;}
+    } else instruction.textContent = "Press any key to begin!";
+}
 
 // check if it is a screen touch or it uses keyboard
 function gameOverInstruction() {
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
         instruction.textContent = "Game Over! Touch to restart";
-    } else instruction.textContent = "Game Over!, press any key to restart"
+    } else instruction.textContent = "Game Over!, press any key to restart";
 }
 
 // Playing sound corresponding to the color chosen at random or the clicked color   
@@ -94,23 +95,30 @@ function playSound(string) {
     }
 }
 
-enableUserAnswer = () => { 
-        $("[class|='color']").off("click");
-        $("[class|='color']").on("click", function () {
-            let elementClass = $(this).attr("class").split(" ")[0];
-            playSound(elementClass);
-            $(this).addClass(elementClass + "-lighter");
-            setTimeout(() => {
-                $(this).removeClass(elementClass + "-lighter");
-            }, 200);
-            userAnswers.push(elementClass);
-            checkAnswers();
-        });
+function enableUserAnswer() {
+    var colorElements = document.querySelectorAll("[class^='color']");
+    
+    for (var i = 0; i < colorElements.length; i++) {
+        // Remove existing event listeners (if any)
+        colorElements[i].removeEventListener("click", colorClickHandler);
+        // Add new event listener
+        colorElements[i].addEventListener("click", colorClickHandler);
+    }
+}
+
+function colorClickHandler(event) {
+    let elementClass = event.target.className.split(" ")[0];
+    playSound(elementClass);
+    event.target.classList.add(elementClass + "-lighter");
+    setTimeout(() => {
+        event.target.classList.remove(elementClass + "-lighter");
+    }, 200);
+    userAnswers.push(elementClass);
+    checkAnswers();
 }
 
 // check if the userAnswer array is corresponding to the gamePattern so far on each click
-
-checkAnswers = () => {
+function checkAnswers() {
     let currentIndex = userAnswers.length - 1; // Get the last entered answer
     if (userAnswers[currentIndex] === gamePattern[currentIndex]) {
         // Check if the user has completed the current level
@@ -124,7 +132,7 @@ checkAnswers = () => {
     }
 }
 
-gameOver = () => {
+function gameOver() {
     //Reset Everything
     playSound("wrong");
     level = 0;
