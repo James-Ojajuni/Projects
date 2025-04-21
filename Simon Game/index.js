@@ -37,14 +37,15 @@ function startGameHandler() {
         document.removeEventListener("keydown", startGameHandler);
         document.removeEventListener("touchstart", startGameHandler); // Remove listener after first press
         setTimeout(gameBegins, 1500);
-    }}
+    }
+}
 
 // A sequence of actions to be carried out when the game begins
 function gameBegins() {
 
     if (gameStarted) {
         level ++;
-        $("h2").text("Level " + level);
+        document.querySelector("h2").textContent = "Level " + level;
         let randomNumber = Math.floor(Math.random()*4);
         let randomColor = colors[randomNumber];
         gamePattern.push(randomColor);
